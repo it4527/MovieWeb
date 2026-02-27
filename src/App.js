@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import "./styles.css";
 import Header from "./components/Header";
@@ -13,7 +12,7 @@ function App() {
   const [watchlist, setWatchlist] = useState([]);
 
   useEffect(() => {
-    fetch("movies.json")
+    fetch(`${process.env.PUBLIC_URL}/movies.json`)
       .then((response) => response.json())
       .then((data) => setMovies(data));
   }, []);
@@ -22,7 +21,7 @@ function App() {
     setWatchlist((prev) =>
       prev.includes(movieId)
         ? prev.filter((id) => id !== movieId)
-        : [...prev, movieId]
+        : [...prev, movieId],
     );
   };
 
